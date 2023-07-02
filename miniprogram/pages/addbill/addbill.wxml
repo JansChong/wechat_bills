@@ -1,0 +1,79 @@
+<view class="navbar">
+    <van-tabs active="{{ active }}" bind:change="onChangeTab" type="card" color="#343233" title-active-color="#fddc2d">
+
+        <van-tab title="支出">
+            <view class="content">
+                <!-- 支出条目 -->
+                <view class="entry-item" wx:for="{{entry}}" wx:key="index" bindtap="addBill" data-entry="{{item}}">
+                    <view>
+                        <image class="auto-img" src="{{item.iconPath}}" alt=""></image>
+                    </view>
+                    <text>{{item.type}}</text>
+                </view>
+            </view>
+        </van-tab>
+
+        <van-tab title="收入">
+            <view class="content">
+                <!-- 收入条目 -->
+                <view class="entry-item" wx:for="{{incomeEntry}}" wx:key="index" bindtap="addBill" data-entry="{{item}}" data-isIncome="{{true}}">
+                    <view>
+                        <image class="auto-img" src="{{item.iconPath}}" alt=""></image>
+                    </view>
+                    <text>{{item.type}}</text>
+                </view>
+            </view>
+        </van-tab>
+
+    </van-tabs>
+</view>
+
+
+<!-- 弹出层 -->
+<van-popup show="{{ showPopUp }}" position="bottom" custom-style="height: 250px;" bind:close="onClosePopUp">
+
+    <!-- 输入框部份 -->
+    <view class="ipt-box">
+        <!-- 备注 -->
+        <view class="remarks">
+            <text>备注</text>
+            <input type="text" value="{{type}}" placeholder="请输入备注" bindconfirm="changeBillText"></input>
+        </view>
+        <!-- 金额 -->
+        <view class="money">{{money}}</view>
+    </view>
+
+    <!-- 键盘部份 -->
+    <van-row bindtap="onkeyboard">
+        <van-col span="6" data-key="7">7</van-col>
+        <van-col span="6" data-key="8">8</van-col>
+        <van-col span="6" data-key="9">9</van-col>
+        <van-col span="6">
+            <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+                <view class="picker" data-key="今天">
+                    <!-- 调用导入的模块 -->
+                    {{date == "今天" ? date : addbill.formatDate(date)}}
+                </view>
+            </picker>
+        </van-col>
+        <van-col span="6" data-key="4">4</van-col>
+        <van-col span="6" data-key="5">5</van-col>
+        <van-col span="6" data-key="6">6</van-col>
+        <van-col span="6" data-key="+">+</van-col>
+        <van-col span="6" data-key="1">1</van-col>
+        <van-col span="6" data-key="2">2</van-col>
+        <van-col span="6" data-key="3">3</van-col>
+        <van-col span="6" data-key="-">-</van-col>
+        <van-col span="6" data-key=".">.</van-col>
+        <van-col span="6" data-key="0">0</van-col>
+        <van-col span="6" data-key="删除">删除</van-col>
+        <van-col span="6" data-key="完成">完成</van-col>
+    </van-row>
+
+</van-popup>
+
+
+
+<!-- 导入日期格式化模块 wxs -->
+<!-- module="给模块起名字" -->
+<wxs src="./addbill.wxs" module="addbill" />

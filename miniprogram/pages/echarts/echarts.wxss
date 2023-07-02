@@ -1,0 +1,121 @@
+page {
+    width: 100%;
+    /* padding: 130rpx 40rpx 30rpx; */
+    padding-top: 100rpx;
+}
+
+/* 顶部导航样式 */
+.navbar {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #fddc2d;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9;
+}
+
+.van-tabs__scroll.van-tabs__scroll--card {
+    border-radius: 16rpx;
+    overflow: hidden;
+}
+
+.van-tab {
+    flex: none;
+    width: 60px;
+    background-color: #fddc2d;
+}
+
+.echart{
+    height: 160px;
+    overflow: hidden;
+    padding-bottom: 20rpx;
+    position: relative;
+    z-index: 0;
+}
+.line {
+    width: 100%;
+    height: 200px;
+}
+ec-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 表头的样式 */
+.desc {
+    height: 60rpx;
+    font-size: 24rpx;
+    border-bottom: 2rpx solid #ddd;
+}
+
+.desc>view {
+    width: 160rpx;
+    text-align: center;
+    line-height:56rpx;
+    border-bottom: 4rpx solid #666;
+    box-sizing: border-box;
+}
+
+.list{
+    padding: 0 20rpx;
+}
+.list .list-top{
+    font-size: 24rpx;
+    color: #333;
+}
+.list-item{
+    height: 110rpx;
+    display: flex;
+    align-items: center;
+}
+
+.list .imgbox{
+    flex-grow: 0;
+    flex-shrink: 0;
+    
+    width: 68rpx;
+    height: 68rpx;
+    background-color: #efefef;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list .rightbox{
+    height: 100%;
+    margin-left: 20rpx;
+    flex-grow: 1;
+    border-bottom: 2rpx solid #ddd;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.list .list-item:last-child .rightbox{
+    border-bottom: none;
+}
+.list .rightbox>.text{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 26rpx;
+    color: #333;
+}
+.list image{
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.progress{
+    width: 100%;
+    margin-top: 6rpx;
+}
+.progress>view{
+    height: 10rpx;
+    border-radius: 5rpx;
+    background-color:#f3d126;
+}

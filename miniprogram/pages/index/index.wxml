@@ -1,0 +1,49 @@
+    <view class="navbar">
+        <view bindtap="showPopup">
+            <picker fields="month" mode="date" bindchange="bindDateChange">
+                <view class="desc">{{year}}年</view>
+                <view class="datail">
+                    {{month}}<text>月</text>
+                    <van-icon name="arrow-down" />
+                </view>
+            </picker>
+        </view>
+
+        <view>
+            <view class="desc">收入</view>
+            <view class="datail">{{-utils.expenditure(bills, true)}}<text>.00</text></view>
+        </view>
+
+        <view>
+            <view class="desc">支出</view>
+            <view class="datail">{{utils.expenditure(bills)}}<text>.00</text></view>
+        </view>
+    </view>
+
+    <view class="main">
+        <!-- 一组是一天 -->
+        <van-cell-group border="{{false}}" wx:for="{{bills}}" wx:key="index">
+            <!-- 12月23日 星期五 -->
+            <van-cell title="{{utils.format(item.date)}}" title-style="color: #666;font-size: 24rpx;">
+                <!-- 插槽 -->
+                <view class="right_text">
+                    <view>支出: {{item.expend}}</view>
+                    <view>收入: {{-item.income}}</view>
+                </view>
+            </van-cell>
+
+            <view class="cell_item" wx:for="{{item.data}}" wx:key="idx" wx:for-item="itm" wx:for-index="idx">
+                <view class="left_img">
+                    <image src="{{itm.iconPath}}" mode="" />
+                </view>
+                <view class="right_text">
+                    <text>{{itm.text||itm.type}}</text>
+                    <!-- 金额  -->
+                    <text>{{-itm.moneyStr}}</text>
+                </view>
+            </view>
+
+        </van-cell-group>
+    </view>
+    <wxs src="./index.wxs" module="utils" />
+

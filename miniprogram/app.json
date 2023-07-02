@@ -1,0 +1,53 @@
+{
+    "entryPagePath": "pages/mine/mine",
+    "pages": [
+        "pages/index/index",
+        "pages/addbill/addbill",
+        "pages/bill/bill",
+        "pages/echarts/echarts",
+        "pages/mine/mine"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fddc2d",
+        "navigationBarTitleText": "H5-庄展汾-记账项目",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "selectedColor": "#fddc2d",
+        "list": [{
+            "pagePath": "pages/index/index",
+            "text": "明细"
+        }, {
+            "pagePath": "pages/echarts/echarts",
+            "text": "图表"
+        }, {
+            "pagePath": "pages/addbill/addbill",
+            "text": "记账"
+        }, {
+            "pagePath": "pages/bill/bill",
+            "text": "账单"
+        }, {
+            "pagePath": "pages/mine/mine",
+            "text": "我的"
+        }]
+    },
+    "usingComponents": {
+        "van-button": "@vant/weapp/button/index",
+        "van-icon": "@vant/weapp/icon/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-cell": "@vant/weapp/cell/index",
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-tab": "@vant/weapp/tab/index",
+        "van-tabs": "@vant/weapp/tabs/index",
+        "van-field": "@vant/weapp/field/index",
+        "van-row": "@vant/weapp/row/index",
+        "van-col": "@vant/weapp/col/index",
+        "van-share-sheet": "@vant/weapp/share-sheet/index",
+        "van-toast": "@vant/weapp/toast/index",
+        "van-radio": "@vant/weapp/radio/index",
+        "van-radio-group": "@vant/weapp/radio-group/index"
+    },
+    "sitemapLocation": "sitemap.json",
+    "lazyCodeLoading": "requiredComponents"
+}

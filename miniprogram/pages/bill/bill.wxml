@@ -1,0 +1,44 @@
+<view class="navbar">
+    <view class="balance">
+        <text>结余</text>
+    </view>
+
+    <view class="money">
+        {{(yearIncome - yearExpend) || 0}}
+    </view>
+
+    <view class="iore">
+        <view class="income">
+            收入 <text>{{yearIncome}}</text>
+        </view>
+        <view class="line"></view>
+        <view class="expend">
+            支出 <text>{{yearExpend}}</text>
+        </view>
+    </view>
+
+    <!-- 年份选择 -->
+    <picker class="picker" mode="date" fields="year" bindchange='changeYear'>
+        {{year}}年
+        <van-icon name="arrow-down" />
+    </picker>
+</view>
+
+<view class="list">
+    <view class="first-item  item">
+        <view>月份</view>
+        <view>收入</view>
+        <view>支出</view>
+        <view>结余</view>
+    </view>
+
+    <view  wx:for="{{monthArr}}" wx:key="index" class="item">
+        <view class="first-index">{{item.month+"月"}}</view>
+        <view>{{-item.monthIncome}}</view>
+        <view>{{item.monthExpend}}</view>
+        <view>{{-item.monthIncome - item.monthExpend}}</view>
+    </view>
+</view>
+
+
+

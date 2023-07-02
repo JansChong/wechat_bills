@@ -1,0 +1,65 @@
+module.exports = {
+    // 日期格式化 2022-12-31 => 12月31日 星期几
+    format: function (evt) {
+        var time = getDate(evt);
+
+        var day = time.getDay();
+        switch (day) {
+            case 0:
+                day = "星期日";
+                break;
+            case 1:
+                day = "星期一";
+                break;
+            case 2:
+                day = "星期二";
+                break;
+            case 3:
+                day = "星期三";
+                break;
+            case 4:
+                day = "星期四";
+                break;
+            case 5:
+                day = "星期五";
+                break;
+            case 6:
+                day = "星期六";
+                break;
+        }
+        var date = time.toLocaleDateString().split("/").slice(1).join("月") + "日 ";
+        return date + day; // 12月31日 星期六
+    },
+
+    // 计算月度收入支出
+    expenditure: function (arr, isIncome) {
+        // isIncome 是否收入: true收入
+        if (!arr) return 0;
+
+        // 每一个条目的金额(数组) [200, 50, 10]
+        var moneyArr = arr.map(function (v) { // 再保留支出数据的金额 (映射) [5000, 3000]
+            // 返回每一天的收入
+            if (isIncome) {
+                return v.income;
+            } else { // 返回返回每一天的支出
+                return v.expend;
+            }
+        })
+        // console.log(JSON.stringify(moneyArr));
+
+
+        // 如果没有数组, 表示没有 收入数组 或 支出数组
+        if (moneyArr.length == 0) return "0";
+
+        // 计算金额
+        // arr.reduce(function(prev, curr), 初始值)
+        var total = moneyArr.reduce(function (prev, curr) {
+            return prev + curr;
+        })
+
+        // 返回计算好的金额
+        return total;
+    }
+
+
+}

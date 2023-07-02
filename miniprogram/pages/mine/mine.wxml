@@ -1,0 +1,90 @@
+<!-- 用户头像 -->
+<view class="navbar">
+
+    <!-- 用户 -->
+    <view class="userInfo" bindtap="showPopup">
+        <view class="avatar">
+            <image src="{{userInfo.avatarUrl || defaultAvatarUrl}}" mode="" />
+        </view>
+
+        <view class="name">
+            <text>{{userInfo.nickname || "微信用户"}}</text>
+        </view>
+    </view>
+
+    <!-- 统计 -->
+    <view class="statistics">
+        <view class="count_day">
+            <view>
+                0
+            </view>
+            <view>
+                总记账天数
+            </view>
+        </view>
+
+        <view class="count-list">
+            <view>
+                0
+            </view>
+            <view>
+                总记账笔数
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 单元格列表 -->
+<van-cell-group>
+    <van-cell icon="apps-o" is-link title="类别设置" />
+    <van-cell icon="clock-o" is-link title="定时提醒" />
+    <van-cell icon="sign" is-link title="升级到App" />
+    <van-cell icon="info-o" is-link title="关于项目" border="{{ false }}" />
+</van-cell-group>
+
+<!-- 分享按钮 -->
+<view class="btn">
+    <van-button color="#ec7370" type="info" bind:click="onShare">推荐这个项目给好友</van-button>
+</view>
+
+<!-- 分享面板 -->
+<van-share-sheet show="{{ showShare }}" title="立即分享给好友" cancel-text="" options="{{ options }}" bind:select="onSelect" bind:close="onClose"></van-share-sheet>
+
+<!-- 轻提示组件 -->
+<van-toast id="van-toast" />
+
+<!-- popup 弹出层 -->
+<van-popup show="{{ showPopup }}" position="bottom" custom-style="height: 75%;" bind:close="onClose">
+
+    <view class="avatar">
+        <image src="{{ temAvatarUrl || defaultAvatarUrl || userInfo.avatarUrl }}" mode="" />
+        <button class="get_avatar_btn" open-type="chooseAvatar" bindchooseavatar="getAvatar">
+            修改用户头像
+        </button>
+    </view>
+
+    <form bindsubmit="onFinish">
+        <van-cell-group>
+            <van-field clearable label="昵称">
+                <input slot="input" type="nickname" name="nickname" value="{{userInfo.nickname || ''}}" />
+            </van-field>
+            <van-field clearable label="性别">
+                <van-radio-group name="sex" value="{{userInfo.sex || sex}}" slot='input' bind:change="onSelectSex" direction="horizontal">
+                    <van-radio checked-color="#ec7370" name="male" icon-size="14px">男</van-radio>
+                    <van-radio checked-color="#ec7370" name="female" icon-size="14px">女</van-radio>
+                </van-radio-group>
+            </van-field>
+
+            <picker mode="date" bindchange="changBirthday">
+                <van-field name="birthday" type="text" label="生日" placeholder="请选择" value="{{birthday || userInfo.birthday}}" disabled custom-style="color: #646566" />
+            </picker>
+
+            <picker mode="region" bindchange="changCity">
+                <van-field name="city" type="text" label="地区" placeholder="请选择" value="{{city||userInfo.city}}" border="{{ false }}" disabled custom-style="color: #646566" />
+            </picker>
+        </van-cell-group>
+
+        <button class="save" form-type="submit">保存</button>
+    </form>
+
+</van-popup>

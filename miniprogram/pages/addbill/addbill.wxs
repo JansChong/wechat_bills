@@ -1,0 +1,7 @@
+// wxs, 给页面执行的脚本
+
+// 导出日期格式化模块
+module.exports.formatDate = function(dateStr) {
+    // 返回处理后的结果
+    return dateStr.split("-").slice(1).join("月") + "日";
+}

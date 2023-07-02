@@ -1,0 +1,55 @@
+<view class="navbar">
+    <van-tabs class="nav-left" active="{{ active }}" bind:change="toggleIsIncome" type="card" color="#343233" title-active-color="#fddc2d">
+        <van-tab title="支出"></van-tab>
+        <van-tab title="收入"></van-tab>
+    </van-tabs>
+    <van-tabs class="nav-right" active="{{ active }}" bind:change="toggleDate" type="card" color="#343233" title-active-color="#fddc2d">
+        <van-tab title="周"></van-tab>
+        <van-tab title="月"></van-tab>
+        <van-tab title="年"></van-tab>
+    </van-tabs>
+</view>
+
+<!-- 表头 -->
+<view class="header">
+    <!-- 图表描述 -->
+    <view class="desc">
+        <view class="title">
+            {{title}}
+        </view>
+    </view>
+</view>
+
+<view class="echart">
+    <view class="line">
+        <!-- ec 是一个我们在 index.js 中定义的对象，它使得图表能够在页面加载后被初始化并设置。 -->
+        <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+    </view>
+</view>
+
+<view class="list">
+    <view class="list-top">{{rore}}排行版:</view>
+    
+    <view class="list-item" wx:for="{{showList}}" wx:key="index">
+        <!-- 左边的图片 -->
+        <view class="imgbox">
+            <image src="{{item.iconPath}}" mode=""></image>
+        </view>
+        
+        <!-- 右边的文字和进度条 -->
+        <view class="rightbox">
+            <!-- 上面的文字 -->
+            <view class="text">
+                <text>{{item.type}}</text>
+                <text>{{item.value}}</text>
+            </view>
+
+            <!-- 进度条 -->
+            <view class="progress">
+                <view style="width: {{item.value/showList[0].value*100+'%'}};"></view>
+            </view>
+        </view>
+         
+    </view>
+</view>
+

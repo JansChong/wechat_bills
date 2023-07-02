@@ -1,0 +1,108 @@
+/* 顶部区域 */
+.navbar{
+    width: 100%;
+    height: 410rpx;
+    background-color: #fddc2d;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 用户 */
+.userInfo{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+.userInfo>.avatar{
+    width: 158rpx;
+    height: 158rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.userInfo>.avatar>image{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.userInfo .name{
+    color: #333;
+    margin-top: 18rpx;
+    margin-bottom: 40rpx;
+}
+
+/* 统计 */
+.statistics{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.statistics>view{
+   text-align: center;
+    color: rgba(80,80,80, 0.8);
+   font-size: 24rpx;
+}
+.statistics>view>view:first-child{
+    font-size: 50rpx;
+    color: black;
+    font-weight: normal;
+}
+
+/* 分享按钮 */
+.btn{
+    margin-top: 120rpx;
+    display: flex;
+    justify-content: center;
+}
+.btn button{
+    border-radius: 10rpx;
+    padding: 0 50rpx;
+}
+
+/* 弹出层 用户头像 */
+van-popup .avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40rpx;
+}
+van-popup image{
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 40rpx 0;
+}
+van-popup .get_avatar_btn{
+    width: 180rpx;
+    height: 40rpx;
+    line-height: 38rpx;
+    font-size: 20rpx;
+    border-radius: 50rpx;
+    border: 1px solid #d64744;
+    color: #d64744;
+    background-color: white;
+}
+
+/* 表单 单选框 */
+van-cell-group van-radio:first-child{
+    margin-right: 10rpx;
+}
+
+/* 表单 提交按钮 */
+.save{
+    margin-top: 60rpx;
+    border-radius: 0;
+    font-size: 30rpx;
+    background-color: #ec7370;
+    color: white;
+}
+
+.van-field__label--disabled{
+    color: #646566!important;
+}
+.van-field__control--disabled{
+    color: #323233!important;
+
+}
